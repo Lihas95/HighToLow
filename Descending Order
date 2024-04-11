@@ -1,0 +1,48 @@
+public class DescendingOrder {
+    
+    public static int sortDesc(final int num) {
+        
+        //Firstly I take the input number, and convert it to an array (digitsArray)
+        String numberStr = Integer.toString(num);
+        int[] digitsArray = new int[numberStr.length()];
+        for (int i = 0; i < numberStr.length(); i++) {
+            digitsArray[i] = numberStr.charAt(i) - '0'; // Convert char to int
+        }
+        //
+        
+        //Then I sort this array
+        
+        
+        int temp = 0;  
+         for(int i=0; i <numberStr.length(); i++){  
+                 for(int j=1; j < (numberStr.length()-i); j++){  
+                          if(digitsArray[j-1] < digitsArray[j]){  
+                                 //swap elements  
+                                 temp = digitsArray[j-1];  
+                                 digitsArray[j-1] = digitsArray[j];  
+                                 digitsArray[j] = temp;  
+                         }  
+                          
+                 }  
+         }
+         
+         
+         // Then I turn this array back into a number (I do this by going through the array, and adding up each number, multiplying it by ten to the power of what it's position is)
+         
+         int result = 0;
+        for (int digit : digitsArray) {
+            result = result * 10 + digit;
+        }
+        return result;
+        
+    }
+
+    public static void main(String[] args) {
+        int inputNumber = 2625445;
+        int digits = sortDesc(inputNumber);
+        
+        
+            System.out.println(digits);
+        
+    }
+}
